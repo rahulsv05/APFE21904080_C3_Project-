@@ -87,4 +87,25 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void get_the_total_price_of_item_selected_in_menu() {
+        LocalTime openingTime = LocalTime.parse("10:30:00");
+        LocalTime closingTime = LocalTime.parse("22:00:00");
+        restaurant = new Restaurant("Amelie's cafe", "Chennai", openingTime, closingTime);
+        restaurant.addToMenu("Sweet corn soup", 120);
+        restaurant.addToMenu("Vegetable lasagne", 150);
+        restaurant.addToMenu("Fried rice", 200);
+        Item item1 = new Item("Sweet corn soup", 120);
+        Item item2 = new Item("Vegetable lasagne", 150);
+        Item item3 = new Item("Fried rice", 200);
+        List<Item> selectedItem = new ArrayList<Item>();
+        selectedItem.add(item1);
+        selectedItem.add(item2);
+        selectedItem.add(item3);
+
+        //call
+        int totalAmount = restaurant.getTotalAmount_Of_Selected_Item(selectedItem);
+        //assert
+        assertEquals(470, totalAmount);
+    }
 }
