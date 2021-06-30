@@ -74,5 +74,12 @@ public class Restaurant {
         return name;
     }
 
+    public int getTotalAmount_Of_Selected_Item(List<Item> selectedItem) {
+        int sum=0;
+        for(Item item: selectedItem) {
+            sum=sum+item.getPrice();
+        }
+        return sum;
+    }
 
 }
